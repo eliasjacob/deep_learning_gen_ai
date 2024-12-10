@@ -1,0 +1,88 @@
+[tool.poetry]
+name = "deep_learning_gen_ai"
+version = "0.1.0"
+description = ""
+authors = ["Elias Jacob <elias.jacob@ufrn.br>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python =  ">=3.12,<3.13"
+
+# ===========================================
+# =========== START OF TORCH PART ===========
+torch       = { version = "^2.5.1", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
+torchvision = { version = "^0.20", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
+torchaudio  = { version = "^2.5.1", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
+skorch = "^1.0.0"
+wordcloud = "^1.9.4"
+xgboost = "^2.1.3"
+lightgbm = "^4.5.0"
+scikit-learn = "^1.5.2"
+langgraph = "^0.2.53"
+torchtext = "0.6.0"
+ipykernel = "^6.29.5"
+ipywidgets = "^8.1.5"
+evaluate = "^0.4.3"
+accelerate = "^1.1.1"
+fasttext = "^0.9.3"
+gensim = "^4.3.3"
+nbformat = "^5.10.4"
+nltk = "^3.9.1"
+spacy = "3.7.5"
+langchain-community = "^0.3.9"
+langchain-experimental = "^0.3.3"
+langchain-chroma = "^0.1.4"
+langchain-huggingface = "^0.1.2"
+langchain-openai = "^0.2.11"
+langchain-anthropic = "^0.3.0"
+langchain-ollama = "^0.2.1"
+pypdf = "^5.1.0"
+scikit-optimize = "^0.10.2"
+ripgrep = "^14.1.0"
+plotly = "^5.24.1"
+plotly-express = "^0.4.1"
+langchain = "^0.3.9"
+datasets = "^3.1.0"
+ffmpeg = "^1.4"
+tf-keras = "^2.18.0"
+lightning = "^2.4.0"
+torchmetrics = "^1.6.0"
+wandb = "^0.18.7"
+librosa = "^0.10.2.post1"
+sentence-transformers = "^3.3.1"
+unstructured = "^0.16.11"
+youtube-transcript-api = "^0.6.3"
+pytube = "^15.0.0"
+langchain-text-splitters = "^0.3.2"
+tiktoken = "^0.8.0"
+
+[tool.poetry.group.cuda]
+optional = true
+
+# https://github.com/pytorch/pytorch/blob/main/RELEASE.md#release-compatibility-matrix
+[tool.poetry.group.cuda.dependencies]
+torch       = { version = "^2.5.1", source = "pytorch-cuda", markers = "extra=='cuda' and extra!='cpu'" }
+torchvision = { version = "^0.20.1", source = "pytorch-cuda", markers = "extra=='cuda' and extra!='cpu'" }
+torchaudio  = { version = "^2.5.1", source = "pytorch-cuda", markers = "extra=='cuda' and extra!='cpu'" }
+
+[tool.poetry.extras]
+cpu  = ["torch", "torchvision", "torchaudio"]
+cuda = ["torch", "torchvision", "torchaudio"]
+
+[[tool.poetry.source]]
+name     = "pytorch-cuda"
+priority = "explicit"
+url      = "https://download.pytorch.org/whl/cu124"
+
+[[tool.poetry.source]]
+name     = "pytorch-cpu"
+priority = "explicit"
+url      = "https://download.pytorch.org/whl/cpu"
+
+# ============ END OF TORCH PART ============
+# ===========================================
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires      = ["poetry-core"]
